@@ -30,6 +30,14 @@
             android:name="com.example.jarvis.SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
+        <activity
+            android:name="com.example.jarvis.ScheduleActivity"
+            android:label="@string/title_activity_schedule" >
+        </activity>
+        <activity
+            android:name="com.example.jarvis.ScheduleAddActivity"
+            android:label="@string/title_activity_schedule_add" >
+        </activity>
     </application>
 
 </manifest>

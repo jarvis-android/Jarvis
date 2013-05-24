@@ -6,5 +6,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_about">about</string>
     <string name="title_activity_about">about</string>
+    <string name="title_activity_schedule">ScheduleActivity</string>
+    <string name="title_activity_schedule_add">ScheduleAddActivity</string>
 
 </resources>
