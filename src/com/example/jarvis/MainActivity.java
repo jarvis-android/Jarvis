@@ -6,11 +6,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Date;
-import java.text.SimpleDateFormat; 
+import java.text.SimpleDateFormat;
 import com.example.util.DatabaseUtil;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -41,7 +43,7 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		dataBase=new DatabaseUtil(this);
+		dataBase = new DatabaseUtil(this);
 		dataHelper = dataBase.getReadableDatabase();
 		gestureDetector = new GestureDetector(new DefaultGestureDetector());
 		setContentView(R.layout.activity_main);
@@ -50,7 +52,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onSelectedDayChange(CalendarView view, int year,
 					int month, int dayOfMonth) {
-				String date = year + "年" + (month+1) + "月" + dayOfMonth + "日";
+				String date = year + "年" + (month + 1) + "月" + dayOfMonth + "日";
 				// List<String> days=new ArrayList<String>();
 				currentYear = year;
 				currentMonth = month;
@@ -61,7 +63,7 @@ public class MainActivity extends Activity {
 								"justSpace", "eventTime" },
 						new int[] { R.id.eventName, R.id.justSpace,
 								R.id.eventTime }));
-			 Toast.makeText(getApplicationContext(), date, 0).show();
+				Toast.makeText(getApplicationContext(), date, 0).show();
 			}
 		});
 
@@ -77,6 +79,7 @@ public class MainActivity extends Activity {
 		});
 	}
 
+
 	private List<HashMap<String, Object>> getData(int year, int month, int day) {
 		List<HashMap<String, Object>> data = new ArrayList<HashMap<String, Object>>();
 		Cursor cursor = dataBase.Event_Select(year, month, day);
@@ -86,20 +89,20 @@ public class MainActivity extends Activity {
 			// description=cursor.getString(cursor.getColumnIndex("Description"));
 			String time = "" + cursor.getInt(cursor.getColumnIndex("Start_HH"))
 					+ ":" + cursor.getString(cursor.getColumnIndex("Start_mm"));
-			int type=cursor.getInt(cursor.getColumnIndex("Event_Type"));
-			switch (type){
-				case 1:
-					item.put("eventColor", R.drawable.blue);
-					break;
-				case 2:
-					item.put("eventColor", R.drawable.green);
-					break;
-				case 3:
-					item.put("eventColor", R.drawable.red);
-					break;
-				case 4:
-					item.put("eventColor", R.drawable.yellow);
-					break;
+			int type = cursor.getInt(cursor.getColumnIndex("Event_Type"));
+			switch (type) {
+			case 1:
+				item.put("eventColor", R.drawable.blue);
+				break;
+			case 2:
+				item.put("eventColor", R.drawable.green);
+				break;
+			case 3:
+				item.put("eventColor", R.drawable.red);
+				break;
+			case 4:
+				item.put("eventColor", R.drawable.yellow);
+				break;
 			}
 			item.put("eventName", title);
 			item.put("justSpace", " ");
