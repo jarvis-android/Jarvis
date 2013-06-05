@@ -27,30 +27,49 @@ public final class R {
         public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int titlebg=0x7f020001;
+        public static final int a1=0x7f020000;
+        public static final int a2=0x7f020001;
+        public static final int a3=0x7f020002;
+        public static final int a4=0x7f020003;
+        public static final int a5=0x7f020004;
+        public static final int a6=0x7f020005;
+        public static final int a7=0x7f020006;
+        public static final int blue=0x7f020007;
+        public static final int green=0x7f020008;
+        public static final int ic_launcher=0x7f020009;
+        public static final int red=0x7f02000a;
+        public static final int titlebg=0x7f02000b;
+        public static final int yellow=0x7f02000c;
     }
     public static final class id {
-        public static final int RadioButton01=0x7f0a000a;
-        public static final int about=0x7f0a0016;
-        public static final int action_settings=0x7f0a0015;
-        public static final int back=0x7f0a0010;
+        public static final int about=0x7f0a001e;
+        public static final int action_settings=0x7f0a001d;
+        public static final int back=0x7f0a0014;
         public static final int calendarViewMain=0x7f0a0000;
-        public static final int editText1=0x7f0a000e;
-        public static final int listView1=0x7f0a0014;
+        public static final int editText1=0x7f0a0012;
+        public static final int eventColor=0x7f0a0019;
+        public static final int eventName=0x7f0a001a;
+        public static final int eventTime=0x7f0a001c;
+        public static final int justSpace=0x7f0a001b;
+        public static final int listView1=0x7f0a0018;
         public static final int listViewEvent=0x7f0a0001;
-        public static final int pri=0x7f0a000f;
-        public static final int priority=0x7f0a0012;
-        public static final int radio0=0x7f0a0009;
-        public static final int radio1=0x7f0a000b;
-        public static final int radio2=0x7f0a000c;
-        public static final int radioGroup1=0x7f0a0008;
-        public static final int ratingBar1=0x7f0a0013;
-        public static final int remind=0x7f0a0011;
-        public static final int reminder=0x7f0a0007;
-        public static final int repeat=0x7f0a0006;
+        public static final int pickdate=0x7f0a000c;
+        public static final int picktime=0x7f0a000e;
+        public static final int pri=0x7f0a0013;
+        public static final int priority=0x7f0a0016;
+        public static final int radioGroup1=0x7f0a0006;
+        public static final int radioLife=0x7f0a0008;
+        public static final int radioOthers=0x7f0a000a;
+        public static final int radioStudy=0x7f0a0009;
+        public static final int radioWork=0x7f0a0007;
+        public static final int ratingBar1=0x7f0a0017;
+        public static final int remind=0x7f0a0015;
+        public static final int reminder=0x7f0a0011;
+        public static final int repeat=0x7f0a0010;
         public static final int save=0x7f0a0003;
-        public static final int starttime=0x7f0a000d;
+        public static final int showdate=0x7f0a000d;
+        public static final int showtime=0x7f0a000f;
+        public static final int starttime=0x7f0a000b;
         public static final int title=0x7f0a0004;
         public static final int title_activity=0x7f0a0002;
         public static final int titletext=0x7f0a0005;
@@ -61,6 +80,7 @@ public final class R {
         public static final int activity_schedule=0x7f030002;
         public static final int activity_schedule_add=0x7f030003;
         public static final int activity_watch_event=0x7f030004;
+        public static final int event_list=0x7f030005;
     }
     public static final class menu {
         public static final int about=0x7f090000;
