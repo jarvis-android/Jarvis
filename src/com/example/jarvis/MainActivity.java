@@ -26,10 +26,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.CalendarView.OnDateChangeListener;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -39,6 +41,7 @@ public class MainActivity extends Activity {
 	private int currentYear, currentMonth, currentDay;
 	private SQLiteDatabase dataHelper;
 	public static DatabaseUtil dataBase;
+	private TextView addEventView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,8 @@ public class MainActivity extends Activity {
 		dataBase = new DatabaseUtil(this);
 		dataHelper = dataBase.getReadableDatabase();
 		gestureDetector = new GestureDetector(new DefaultGestureDetector());
+		addEventView = (TextView)findViewById(R.id.addNewEvent);
+			
 		setContentView(R.layout.activity_main);
 		CalendarView calendarView = (CalendarView) findViewById(R.id.calendarViewMain);
 		calendarView.setOnDateChangeListener(new OnDateChangeListener() {
@@ -60,9 +65,9 @@ public class MainActivity extends Activity {
 				eventList.setAdapter(new SimpleAdapter(MainActivity.this,
 						getData(currentYear, currentMonth, currentDay),
 						R.layout.event_list, new String[] { "eventName",
-								"justSpace", "eventTime" },
+								"justSpace", "eventTime","eventColor" },
 						new int[] { R.id.eventName, R.id.justSpace,
-								R.id.eventTime }));
+								R.id.eventTime,R.id.eventColor }));
 				Toast.makeText(getApplicationContext(), date, 0).show();
 			}
 		});
@@ -79,7 +84,6 @@ public class MainActivity extends Activity {
 		});
 	}
 
-
 	private List<HashMap<String, Object>> getData(int year, int month, int day) {
 		List<HashMap<String, Object>> data = new ArrayList<HashMap<String, Object>>();
 		Cursor cursor = dataBase.Event_Select(year, month, day);
@@ -90,20 +94,24 @@ public class MainActivity extends Activity {
 			String time = "" + cursor.getInt(cursor.getColumnIndex("Start_HH"))
 					+ ":" + cursor.getString(cursor.getColumnIndex("Start_mm"));
 			int type = cursor.getInt(cursor.getColumnIndex("Event_Type"));
+			int colorId;
 			switch (type) {
 			case 1:
-				item.put("eventColor", R.drawable.blue);
+				colorId=R.drawable.blue;
 				break;
 			case 2:
-				item.put("eventColor", R.drawable.green);
+				colorId=R.drawable.green;
 				break;
 			case 3:
-				item.put("eventColor", R.drawable.red);
+				colorId=R.drawable.red;
 				break;
 			case 4:
-				item.put("eventColor", R.drawable.yellow);
+				colorId=R.drawable.yellow;
 				break;
+			default:
+				colorId=R.drawable.blue;
 			}
+			item.put("eventColor", colorId);
 			item.put("eventName", title);
 			item.put("justSpace", " ");
 			item.put("eventTime", time);

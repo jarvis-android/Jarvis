@@ -9,5 +9,6 @@
     <string name="title_activity_schedule">ScheduleActivity</string>
     <string name="title_activity_schedule_add">ScheduleAddActivity</string>
     <string name="title_activity_watch_event">WatchEventActivity</string>
+    <string name="title_activity_settings">SettingsActivity</string>
 
 </resources>

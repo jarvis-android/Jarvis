@@ -58,10 +58,10 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 		db.execSQL(BACKGROUND_CREATE);
 
 		// add 4 background images in Background table to choose
-		db.execSQL("insert into Background values('/res/drawable/a1');");
+/*		db.execSQL("insert into Background values('/res/drawable/a1');");
 		db.execSQL("insert into Background values('/res/drawable/a2');");
 		db.execSQL("insert into Background values('/res/drawable/a3');");
-		db.execSQL("insert into Background values('/res/drawable/a4');");
+		db.execSQL("insert into Background values('/res/drawable/a4');");*/
 		// add 4 records to Event_types
 		db.execSQL("insert into Event_Types values(1,'工作类','Orange');");
 		db.execSQL("insert into Event_Types values(2,'学习类','Green');");

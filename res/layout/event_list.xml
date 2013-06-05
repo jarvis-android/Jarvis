@@ -10,8 +10,7 @@
         android:id="@+id/eventColor"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginLeft="20dp"
-        android:src="@drawable/blue" />
+        android:layout_marginLeft="20dp" />
 
     <TextView
         android:id="@+id/eventName"
