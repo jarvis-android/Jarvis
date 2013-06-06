@@ -5,10 +5,10 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_about">about</string>
-    <string name="title_activity_about">about</string>
+    <string name="title_activity_about">关于</string>
     <string name="title_activity_schedule">ScheduleActivity</string>
-    <string name="title_activity_schedule_add">ScheduleAddActivity</string>
-    <string name="title_activity_watch_event">WatchEventActivity</string>
-    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_schedule_add">添加事件</string>
+    <string name="title_activity_watch_event">查看事件</string>
+    <string name="title_activity_settings">设置</string>
 
 </resources>

@@ -126,7 +126,7 @@ public class DatabaseUtil extends SQLiteOpenHelper {
 				+ recurrence + "," + state + ");");
 	}
 
-	public void Events_Delete(SQLiteDatabase MyHelper, int id) {
+	public void Events_Delete(int id) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		db.execSQL("delete from Events where Event_id=" + id + ";");
 	}

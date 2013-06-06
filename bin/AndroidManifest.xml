@@ -42,6 +42,11 @@
             android:name="com.example.jarvis.WatchEventActivity"
             android:label="@string/title_activity_watch_event" >
         </activity>
+
+        <receiver
+            android:name="com.example.jarvis.AlarmReceiver"
+            android:process=":remote" >
+        </receiver>
     </application>
 
 </manifest>
