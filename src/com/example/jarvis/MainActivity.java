@@ -25,6 +25,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
@@ -46,12 +50,15 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);// 去掉标题栏
+		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);// 去掉信息栏
 		dataBase = new DatabaseUtil(this);
 		dataHelper = dataBase.getReadableDatabase();
 		gestureDetector = new GestureDetector(new DefaultGestureDetector());
-		addEventView = (TextView)findViewById(R.id.addNewEvent);
-			
+		addEventView = (TextView) findViewById(R.id.addNewEvent);
 		setContentView(R.layout.activity_main);
+
 		CalendarView calendarView = (CalendarView) findViewById(R.id.calendarViewMain);
 		calendarView.setOnDateChangeListener(new OnDateChangeListener() {
 			@Override
@@ -65,21 +72,30 @@ public class MainActivity extends Activity {
 				eventList.setAdapter(new SimpleAdapter(MainActivity.this,
 						getData(currentYear, currentMonth, currentDay),
 						R.layout.event_list, new String[] { "eventName",
-								"justSpace", "eventTime","eventColor" },
+								"justSpace", "eventTime", "eventColor" },
 						new int[] { R.id.eventName, R.id.justSpace,
-								R.id.eventTime,R.id.eventColor }));
+								R.id.eventTime, R.id.eventColor }));
 				Toast.makeText(getApplicationContext(), date, 0).show();
 			}
 		});
 
 		eventList = (ListView) this.findViewById(R.id.listViewEvent);
+		eventList.setClickable(true);
 		// eventList.setAdapter(new ArrayAdapter<String>(this,
 		// android.R.layout.simple_list_item_1,getData()));
-		eventList.setOnTouchListener(new OnTouchListener() {
+		eventList.setOnItemClickListener(new OnItemClickListener() {
+
 			@Override
-			public boolean onTouch(View v, MotionEvent event) {
+			public void onItemClick(AdapterView parentView, View childView,
+					int position, long id) {
 				// TODO Auto-generated method stub
-				return gestureDetector.onTouchEvent(event);
+				Map<String,Object> item=(Map<String, Object>) eventList.getItemAtPosition(position);
+				int eventId = (Integer) item.get("id");
+				Bundle extraInfo=new Bundle();
+				extraInfo.putInt("id", eventId);
+				Intent eventInfoIntent=new Intent(MainActivity.this,WatchEventActivity.class);
+				eventInfoIntent.putExtras(extraInfo);
+				startActivity(eventInfoIntent);
 			}
 		});
 	}
@@ -91,30 +107,33 @@ public class MainActivity extends Activity {
 			Map<String, Object> item = new HashMap<String, Object>();
 			String title = cursor.getString(cursor.getColumnIndex("Title"));
 			// description=cursor.getString(cursor.getColumnIndex("Description"));
-			String time = "" + cursor.getInt(cursor.getColumnIndex("Start_HH"))
-					+ ":" + cursor.getString(cursor.getColumnIndex("Start_mm"));
+			String time = String.format("%02d:%02d",
+					cursor.getInt(cursor.getColumnIndex("Start_HH")),
+					cursor.getInt(cursor.getColumnIndex("Start_mm")));
 			int type = cursor.getInt(cursor.getColumnIndex("Event_Type"));
+			int id = cursor.getInt(cursor.getColumnIndex("Event_id"));
 			int colorId;
 			switch (type) {
 			case 1:
-				colorId=R.drawable.blue;
+				colorId = R.drawable.blue;
 				break;
 			case 2:
-				colorId=R.drawable.green;
+				colorId = R.drawable.green;
 				break;
 			case 3:
-				colorId=R.drawable.red;
+				colorId = R.drawable.red;
 				break;
 			case 4:
-				colorId=R.drawable.yellow;
+				colorId = R.drawable.yellow;
 				break;
 			default:
-				colorId=R.drawable.blue;
+				colorId = R.drawable.blue;
 			}
 			item.put("eventColor", colorId);
 			item.put("eventName", title);
 			item.put("justSpace", " ");
 			item.put("eventTime", time);
+			item.put("id", id);
 			data.add((HashMap<String, Object>) item);
 		}
 		cursor.close();

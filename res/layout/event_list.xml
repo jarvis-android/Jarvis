@@ -10,7 +10,10 @@
         android:id="@+id/eventColor"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginLeft="20dp" />
+        android:layout_marginLeft="20dp"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false" />
 
     <TextView
         android:id="@+id/eventName"
@@ -18,25 +21,37 @@
         android:layout_height="30dp"
         android:layout_marginLeft="10dp"
         android:layout_weight="3"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:text="事件名称"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textIsSelectable="false" />
 
     <TextView
         android:id="@+id/justSpace"
         android:layout_width="fill_parent"
         android:layout_height="30dp"
+        android:layout_weight="6"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:gravity="center"
         android:text=" "
-        android:layout_weight="6"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textIsSelectable="false" />
 
     <TextView
         android:id="@+id/eventTime"
         android:layout_width="fill_parent"
         android:layout_height="30dp"
+        android:layout_weight="3"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:gravity="center_vertical"
         android:text="发生时间"
-        android:layout_weight="3"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textIsSelectable="false" />
 
 </LinearLayout>

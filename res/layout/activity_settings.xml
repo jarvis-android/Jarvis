@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/changebackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="更换背景" />
+
+    <CheckBox
+        android:id="@+id/openwhenturnon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="开机启动" />
+
+    <CheckBox
+        android:id="@+id/vibrator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="提醒方式-震动" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="提醒方式-音量" />
+
+    <SeekBar
+        android:id="@+id/soundBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:max="100"  
+        android:progress="10"/>
+
+    <Button
+        android:id="@+id/savingchanges"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="保存" />
+
+</LinearLayout>
